@@ -4,13 +4,13 @@
 
 !! Reflector.js has not yet been thoroughly tested, this is a proof of concept !!
 
-Reflector.js is a neat tool that helps you find out if a service or network is slowing down, without needing a lot of control over that service or the network. Its a low effort measure that can be deployed on higher level stack.
+Reflector.js is a handy utility designed to identify potential slow-downs in a given service or network connection, eliminating the need for extensive research. This feature is particularly beneficial for troubleshooting and establishing connections through substantial local or business networks or proxies. Notably, it requires minimal control over the service or network, making it an effortless solution that can be implemented on advanced-level stacks.
 
-It does this by catching all XHRequests that matches a predefined url and measuring the amount of data the client receives. When the request is captured it also starts requesting data from a secondary service, which we'll call a "reflector", and then compares data speed measurements. If our main service starts providing data slower than our reflector, then we know there might be a problem with the main service. You can think of this reflector as a mirrored data request, hence the name😊
+Once the client-side script is added and configured, it intercepts all XHRequests matching a set URL, subsequently measuring the volume and speed of data the client receives. On capturing a request, the tool initiates data requests from an alternate service, referred to as a "reflector", and compares data speed measurements. If the primary service delivers data at a slower rate than our reflector, it implies a potential issue with the main service; thusly ruling out network issues, defining the problem scope, and better directing engineer efforts.
 
-It only starts measuring when data starts coming in, warm-up time etc is neglected.
+It's important to note that measurements commence only once the data begins to arrive; any warm-up period is disregarded.
 
-The results of these measurements are converted to boxplots, for the service and indivual reflectectors respectively, for a predefined timebox and then dispatched via a callback. You can collect this clientside data and, for example, send it back to a data collection service like Azure for further analysis and visualization.
+The measurement outcomes are transformed into boxplots for both the service and individual reflectors within a set time frame, and then relayed through a callback. This client-side data can be gathered and, for instance, forwarded to a data collection service like Azure for further scrutiny and graphical representation.
 
 The project has two main parts:
 
