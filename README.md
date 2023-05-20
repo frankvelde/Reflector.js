@@ -20,7 +20,7 @@ The project has two main parts:
 
 ## Impact on Services
 
-This data mirroring process won't usually impact your services since they usually run on different connections, and modern browsers can have up to 6 TCP connections per domain. This means that our mirrored requests won't block other requests to the same service. However, if bandwidth is a limiting factor, there could be some impact on your service's performance. You should consider this when setting up your reflector service and deciding how often to make mirrored requests.
+This data mirroring process won't usually impact your services since they usually run on different connections, modern browsers can have up to 6 TCP connections per domain. This means that our mirrored requests won't block requests to the original service. However, if bandwidth is a limiting factor, there could be some impact on your service's performance. You should consider this when setting up your reflector service and deciding how often to make mirrored requests.That being said, the amount of data requested from the reflector can be specified.
 
 ## Setup
 
