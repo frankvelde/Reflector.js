@@ -1,8 +1,8 @@
 (function () {
     var config = {
       originalServiceURL: 'http://originalservice.c0m/',
-      reflectorServiceURLs: ['http://reflector1.c0m', 'http://reflector2.c0m'],
-      timeboxInterval: 5000, // Time in ms
+      reflectorServiceURLs: ['http://reflector1.c0m/data', 'http://reflector2.c0m/data'],
+      timeboxInterval: 300000, // Time in ms
       minMeasurements: 5, // Minimum number of measurements required
       callback: (data) => { console.log(data); } // Callback function to handle the generated data
     };
