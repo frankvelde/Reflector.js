@@ -4,7 +4,9 @@
 
 !! Reflector.js has not yet been thoroughly tested, this is a proof of concept !!
 
-Reflector.js is a neat tool that helps you find out if a service or network is slowing down, without you needing to have control over that service or network. It does this by measuring the amount of data we receive every second (we call this "bytes per second") from a particular service. It then compares this with similar measurements from a secondary service, which we call a "reflector". Think of this reflector as a mirror for our data. If our main service starts providing data slower than our reflector, then we know there might be a problem with the main service.
+Reflector.js is a neat tool that helps you find out if a service or network is slowing down, without needing a lot of control over that service or the network. Its a low effort measure that can be deployed on higher level stack.
+
+It does this by measuring the amount of data we receive every second (we call this "bytes per second") from a particular service. It then compares this with similar measurements from a secondary service, which we call a "reflector". Think of this reflector as a mirror for our data. If our main service starts providing data slower than our reflector, then we know there might be a problem with the main service.
 
 The results of these measurements are represented as boxplot data (a kind of graph that helps us see the spread and skewness of our data) which we update periodically. You can collect this clientside data and, for example, send it back to a data collection service like Azure for further analysis and visualization.
 
