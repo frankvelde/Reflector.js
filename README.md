@@ -10,7 +10,7 @@ Once the client-side script is added and configured, it intercepts all XHRequest
 
 It's important to note that measurements commence only once the data begins to arrive; any warm-up period is disregarded.
 
-The measurement outcomes are transformed into boxplots for both the service and individual reflectors within a set time frame, and then relayed through a callback. This client-side data can be gathered and, for instance, forwarded to a data collection service like Azure for further scrutiny and graphical representation.
+The measurement outcomes are transformed into boxplots for both the service and individual reflectors within a set time frame, and then relayed through a callback. This client-side data can be gathered and, for instance, forwarded to a data collection service like Azure Monitor for further analyses.
 
 The project has two main parts:
 
