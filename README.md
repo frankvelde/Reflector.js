@@ -1,3 +1,5 @@
+![Logo](/assets/ref-logo.png)
+
 # Reflector.js
 
 !! Reflector.js has not yet been thoroughly tested, this is a proof of concept !!
