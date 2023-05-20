@@ -6,9 +6,11 @@
 
 Reflector.js is a neat tool that helps you find out if a service or network is slowing down, without needing a lot of control over that service or the network. Its a low effort measure that can be deployed on higher level stack.
 
-It does this by measuring the amount of data we receive every second (we call this "bytes per second") from a particular service. It then compares this with similar measurements from a secondary service, which we call a "reflector". Think of this reflector as a mirror for our data. If our main service starts providing data slower than our reflector, then we know there might be a problem with the main service.
+It does this by catching all XHRequests that matches a predefined url and measuring the amount of data the client receives. When the request is captured it also starts requesting data from a secondary service, which we'll call a "reflector", and then compares data speed measurements. If our main service starts providing data slower than our reflector, then we know there might be a problem with the main service. You can think of this reflector as a mirrored data request, hence the name😊
 
-The results of these measurements are represented as boxplot data (a kind of graph that helps us see the spread and skewness of our data) which we update periodically. You can collect this clientside data and, for example, send it back to a data collection service like Azure for further analysis and visualization.
+It only starts measuring when data starts coming in, warm-up time etc is neglected.
+
+The results of these measurements are converted to boxplots, for the service and indivual reflectectors respectively, for a predefined timebox and then dispatched via a callback. You can collect this clientside data and, for example, send it back to a data collection service like Azure for further analysis and visualization.
 
 The project has two main parts:
 
@@ -34,7 +36,7 @@ In the server script (`reflector-server.js`), there's a configuration object (`c
 
 - `allowedDomain`: Enter the URL of the website that's allowed to use the reflector server. 
 - `maxTotalSize`: This is the maximum size of data (in bytes) that the server can send back. It's currently set to 1 kilobyte (1024 bytes). You can change it if you want.
-- `port`: This is the port number that the server listens to. If you don't know what a port is, think of it as a door number in a big building. Your server lives inside this "building" and listens for any knocks on that door.
+- `port`: This is the port number that the server listens to.
 - `useHttps`: If you want to use a secure connection (HTTPS), set this to `true`. Otherwise, leave it as `false`.
 - `certPath`, `keyPath`, `caPath`: If you're using HTTPS, you need to provide paths to your SSL certificate, private key, and CA bundle.
 
@@ -54,15 +56,7 @@ The client script (`reflector.js`) runs in the browser. It also has a configurat
 - `reflectorServiceURLs`: These are the URLs of your reflector servers. You can have more than one reflector if you want.
 - `timeboxInterval`: This is how often (in milliseconds) you want to receive updates via the callback.
 - `minMeasurements`: This is the minimum number of measurements you need to create a boxplot.
-- `callback`: This is a function that does something with the boxplot data. Right now, it just prints the data to the console. But you can replace this function to do something more useful. For example, you can send the data to a data collection service like Azure:
-
-```javascript
-callback: (data) => {
-    sendToAzure(data);
-}
-```
-
-In this example, `sendToAzure` would be a function you write to send the data to Azure. You can define this function to suit your specific needs.
+- `callback`: This is a function that returns the boxplot data. By deefault it just prints the data to the console. But you can replace this function to do something more useful. For example, you can send the data to a data collection service like Azure:
 
 To use the client script, include it in your HTML like this:
 
