@@ -50,7 +50,7 @@ node reflector-server.js
 
 The client script (`reflector.js`) runs in the browser. It also has a configuration object (`config`) that you need to update:
 
-- `originalServiceURL`: This is the URL of the main service
+- `originalServiceHostname`: This is the hostname of the main service
 
  that you want to measure.
 - `reflectorServiceURLs`: These are the URLs of your reflector servers. You can have more than one reflector if you want.
