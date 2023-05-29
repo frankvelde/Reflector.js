@@ -1,6 +1,6 @@
 (function () {
     var config = {
-      originalServiceURL: 'http://originalservice.c0m/',
+      originalServiceHostname: 'originalservice.c0m',
       reflectorServiceURLs: ['http://reflector1.c0m/data', 'http://reflector2.c0m/data'],
       timeboxInterval: 300000, // Time in ms
       minMeasurements: 5, // Minimum number of measurements required
@@ -13,7 +13,8 @@
     var send = XMLHttpRequest.prototype.send;
   
     XMLHttpRequest.prototype.open = function () {
-      this._url = arguments[1];
+      var url = new URL(arguments[1]);
+      this._url = url.hostname;
       open.apply(this, arguments);
     };
   
