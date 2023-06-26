@@ -2,7 +2,7 @@
 
 # Reflector.js
 
-!! Reflector.js has not yet been thoroughly tested, this is a proof of concept !!
+!! Pleasse note that is work in progress, bugs are a plenty !!
 
 Reflector.js is a practical tool designed to pinpoint whether service-related issues or network problems are causing slowdowns, all without necessitating comprehensive access. This proves especially advantageous for diagnosing and gauging service issues across large-scale local networks, corporate networks, or proxies.
 
