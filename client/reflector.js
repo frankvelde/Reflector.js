@@ -19,7 +19,7 @@
     };
   
     XMLHttpRequest.prototype.send = function () {
-      if (this._url === config.originalServiceURL) {
+      if (this._url === config.originalServiceHostname) {
         var requestId = Math.random().toString(36).substring(7);
         var started = false;
         this.addEventListener('readystatechange', function () {
@@ -31,10 +31,10 @@
             performance.measure(`originalDuration_${requestId}`, `originalStart_${requestId}`, `originalEnd_${requestId}`);
             const duration = performance.getEntriesByName(`originalDuration_${requestId}`)[0].duration;
             const avgTimePerByte = this.responseText.length ? duration / this.responseText.length : 0;
-            if (!data[config.originalServiceURL]) {
-              data[config.originalServiceURL] = [];
+            if (!data[config.originalServiceHostname]) {
+              data[config.originalServiceHostname] = [];
             }
-            data[config.originalServiceURL].push(avgTimePerByte);
+            data[config.originalServiceHostname].push(avgTimePerByte);
   
             // Start reflector services measurement
             for (const reflector of config.reflectorServiceURLs) {
@@ -65,7 +65,7 @@
         }, false);
   
         this.onerror = function () {
-          console.error(`Error occurred while making request to ${config.originalServiceURL}`);
+          console.error(`Error occurred while making request to ${config.originalServiceHostname}`);
         };
       }
       send.apply(this, arguments);
