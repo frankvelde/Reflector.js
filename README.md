@@ -4,7 +4,7 @@
 
 !! Pleasse note this is work in progress, bugs are aplenty !!
 
-Reflector.js is a practical tool designed to pinpoint whether service-related issues or network problems are causing slowdowns, all without necessitating comprehensive access. This proves especially advantageous for diagnosing and gauging service issues across large-scale local networks, corporate networks, or proxies.
+Reflector.js is a practical tool designed to pinpoint whether service-related issues or network problems are causing slowdowns, all without necessitating comprehensive access. This proves especially advantageous for diagnosing and gauging service issues across large-scale networks
 
 Once the client-side script is configured, it intercepts all XHRequests matching your seervice URL, subsequently measuring the volume and speed of data the client receives. On capturing a request, the tool initiates data requests from an alternate service, referred to as a "reflector", and compares data speed measurements. If the primary service delivers data at a slower rate than our reflector, it implies a potential issue with the main service; thusly ruling out network issues, defining the problem scope, and better directing engineer efforts.
 
